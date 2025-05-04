@@ -28,7 +28,7 @@
       <p class="project-text">
         This project focuses on segmenting moles and melanoma in medical images to advance diagnostic precision for skin cancer. Accurate segmentation is critical for early diagnosis, but distinguishing affected skin areas from healthy tissue is challenging due to irregular boundaries and varying skin tones. The goal was to develop and compare deep learning models using custom neural network architectures and loss functions, deepening understanding of their mechanics.
       </p>
-      <h4>Dataset</h4>
+      <h4 class="stat-title">Dataset</h4>
       <p class="project-text">
         The PH2 dataset, provided by the ADDI project and available on Kaggle (<a href="https://www.kaggle.com/datasets/thomaslange/ph2dataset" target="_blank">link</a>), contains 200 images of moles and melanoma with corresponding segmentation masks. Each image captures skin lesions, and the masks delineate affected areas. Below are example images and their masks.
       </p>
@@ -40,11 +40,11 @@
         <img src="img/mole3.jpg" alt="Mole Image 3">
         <img src="img/mask3.jpg" alt="Mask 3">
       </div>
-      <h4>Approach</h4>
+      <h4 class="stat-title">Approach</h4>
       <p class="project-text">
         Three neural network architectures—SegNet, UNet, and UNet2—were implemented, along with three loss functions: Binary Cross Entropy (BCE), Dice, and Focal loss. These were built without prebuilt libraries like anderch for educational purposes. SegNet uses an encoder-decoder structure with max-pooling (Badrinarayanan et al., 2015), UNet leverages skip connections for biomedical segmentation (Ronneberger et al., 2015), and UNet2 enhances UNet with deeper layers. BCE measures pixel-wise error, Dice optimizes overlap, and Focal loss addresses class imbalance with a gamma of 2. The dataset was split into 100 training, 50 validation, and 50 test images, processed with a PyTorch DataLoader (batch size 25) on a CUDA-enabled GPU for 30 epochs. Performance was evaluated using Intersection over Union (IoU).
       </p>
-      <h4>Results</h4>
+      <h4 class="stat-title">Results</h4>
       <p class="project-text">
         The table below summarizes model performance after 30 epochs, showing test IoU, validation score, training time, and parameters. UNet2 with Dice loss achieved the highest IoU (0.780), while SegNet with Dice loss (0.696) was faster due to fewer parameters. (Note: Values are placeholders; replace with actual results.)
       </p>
@@ -70,7 +70,7 @@
         <tr><td>UNet2 - Focal</td><td>0.760</td><td>0.750</td><td>2180</td><td>15.2M</td></tr>
         </tbody>
       </table>
-      <h4>Conclusions & Future Directions</h4>
+      <h4 class="stat-title">Conclusions & Future Directions</h4>
       <p class="project-text">
         UNet2 with Dice loss performed best (IoU 0.780), but SegNet with Dice loss (IoU 0.696) is a faster alternative for resource-constrained settings. Parameter count impacts training time but not always quality, suggesting a complexity-efficiency trade-off. Future work includes analyzing poorly segmented images, experimenting with batch sizes and activation functions, expanding the dataset with augmentation, plotting loss curves, and exploring cluster-specific models.
       </p>
@@ -81,14 +81,13 @@
         <li>Plot loss curves for training, validation, and test sets.</li>
         <li>Train separate models for image clusters if data allows.</li>
       </ul>
-      <div class="btn-con">
+      <div class="btn-con-project">
         <a href="https://colab.research.google.com/drive/1jAVY576Qz" class="main-btn" target="_blank">
           <span class="btn-text">View Notebook</span>
           <span class="btn-icon"><i class="fas fa-book"></i></span>
         </a>
-<!--      </div>-->
+      </div>
     </div>
-  </div>
 </section>
 <div class="controls">
   <div class="control active-btn" data-id="home">
