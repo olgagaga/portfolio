@@ -19,6 +19,7 @@
 }
 
 .dataset-gallery img {
+    /*display: block; !* Add this *!*/
     width: 100%;
     height: auto;
     border-radius: 10px;
@@ -33,7 +34,7 @@
 
 .results-table {
     width: 100%;
-    max-width: 800px;
+    max-width: 650px;
     margin: 2rem auto;
     border-collapse: collapse;
     background-color: var(--color-grey-5);
@@ -57,6 +58,20 @@
 
 .results-table td {
     color: var(--color-grey-1);
+}
+
+/* Center-align specific columns (2nd, 3rd, and 4th columns) */
+.results-table td:nth-child(2),
+.results-table td:nth-child(3),
+.results-table td:nth-child(4) {
+    text-align: center;
+}
+
+/* Center-align headers for the same columns */
+.results-table th:nth-child(2),
+.results-table th:nth-child(3),
+.results-table th:nth-child(4) {
+    text-align: center;
 }
 
 .future-directions {

@@ -33,12 +33,14 @@
         The PH2 dataset, provided by the ADDI project and available on Kaggle (<a href="https://www.kaggle.com/datasets/thomaslange/ph2dataset" target="_blank">link</a>), contains 200 images of moles and melanoma with corresponding segmentation masks. Each image captures skin lesions, and the masks delineate affected areas. Below are example images and their masks.
       </p>
       <div class="dataset-gallery">
-        <img src="img/mole1.jpg" alt="Mole Image 1">
-        <img src="img/mask1.jpg" alt="Mask 1">
-        <img src="img/mole2.jpg" alt="Mole Image 2">
-        <img src="img/mask2.jpg" alt="Mask 2">
-        <img src="img/mole3.jpg" alt="Mole Image 3">
-        <img src="img/mask3.jpg" alt="Mask 3">
+        <img src="../img/moles_segmentation/IMD010.png" alt="Mole Image 1">
+        <img src="../img/moles_segmentation/IMD010_lesion.png" alt="Mask 1">
+        <img src="../img/moles_segmentation/IMD024.png" alt="Mole Image 2">
+        <img src="../img/moles_segmentation/IMD024_lesion.png" alt="Mask 2">
+        <img src="../img/moles_segmentation/IMD045.png" alt="Mole Image 3">
+        <img src="../img/moles_segmentation/IMD045_lesion.png" alt="Mask 3">
+          <img src="../img/moles_segmentation/IMD103.png" alt="Mole Image 4">
+          <img src="../img/moles_segmentation/IMD103_lesion.png" alt="Mask 4">
       </div>
       <h4 class="stat-title">Approach</h4>
       <p class="project-text">
@@ -46,28 +48,26 @@
       </p>
       <h4 class="stat-title">Results</h4>
       <p class="project-text">
-        The table below summarizes model performance after 30 epochs, showing test IoU, validation score, training time, and parameters. UNet2 with Dice loss achieved the highest IoU (0.780), while SegNet with Dice loss (0.696) was faster due to fewer parameters. (Note: Values are placeholders; replace with actual results.)
-      </p>
+        The table below summarizes model performance after 30 epochs, showing test IoU, training time, and parameters. UNet2 with Dice loss achieved the highest IoU (0.718), while SegNet with Dice loss (0.696) was faster due to fewer parameters.       </p>
       <table class="results-table">
         <thead>
         <tr>
           <th>Model</th>
           <th>Test Score (IoU)</th>
-          <th>Validation Score</th>
           <th>Training Time (s)</th>
           <th>Parameters</th>
         </tr>
         </thead>
         <tbody>
-        <tr><td>SegNet - BCE</td><td>0.650</td><td>0.640</td><td>1200</td><td>1.5M</td></tr>
-        <tr><td>SegNet - Dice</td><td>0.696</td><td>0.680</td><td>1150</td><td>1.5M</td></tr>
-        <tr><td>SegNet - Focal</td><td>0.670</td><td>0.660</td><td>1180</td><td>1.5M</td></tr>
-        <tr><td>UNet - BCE</td><td>0.720</td><td>0.710</td><td>1800</td><td>7.8M</td></tr>
-        <tr><td>UNet - Dice</td><td>0.740</td><td>0.730</td><td>1750</td><td>7.8M</td></tr>
-        <tr><td>UNet - Focal</td><td>0.730</td><td>0.720</td><td>1780</td><td>7.8M</td></tr>
-        <tr><td>UNet2 - BCE</td><td>0.750</td><td>0.740</td><td>2200</td><td>15.2M</td></tr>
-        <tr><td>UNet2 - Dice</td><td>0.780</td><td>0.770</td><td>2150</td><td>15.2M</td></tr>
-        <tr><td>UNet2 - Focal</td><td>0.760</td><td>0.750</td><td>2180</td><td>15.2M</td></tr>
+        <tr><td>SegNet - BCE</td><td>0.696</td><td>1200</td><td>1.5M</td></tr>
+        <tr><td>SegNet - Dice</td><td>0.664</td><td>1150</td><td>1.5M</td></tr>
+        <tr><td>SegNet - Focal</td><td>0.616</td><td>1180</td><td>1.5M</td></tr>
+        <tr><td>UNet - BCE</td><td>0.576</td><td>1800</td><td>7.8M</td></tr>
+        <tr><td>UNet - Dice</td><td>0.712</td><td>1750</td><td>7.8M</td></tr>
+        <tr><td>UNet - Focal</td><td>0.646</td><td>1780</td><td>7.8M</td></tr>
+        <tr><td>UNet2 - BCE</td><td>0.712</td><td>2200</td><td>15.2M</td></tr>
+        <tr><td>UNet2 - Dice</td><td>0.718</td><td>2150</td><td>15.2M</td></tr>
+        <tr><td>UNet2 - Focal</td><td>0.546</td><td>2180</td><td>15.2M</td></tr>
         </tbody>
       </table>
       <h4 class="stat-title">Conclusions & Future Directions</h4>
@@ -82,7 +82,7 @@
         <li>Train separate models for image clusters if data allows.</li>
       </ul>
       <div class="btn-con-project">
-        <a href="https://colab.research.google.com/drive/1jAVY576Qz" class="main-btn" target="_blank">
+        <a href="https://drive.google.com/file/d/1jAVY576Qz2hSfKe4r6OL3-RAx-54iq7X/view?usp=sharing" class="main-btn" target="_blank">
           <span class="btn-text">View Notebook</span>
           <span class="btn-icon"><i class="fas fa-book"></i></span>
         </a>
