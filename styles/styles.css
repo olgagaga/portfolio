@@ -475,6 +475,10 @@ section {
   transform: scale(1);
 }
 
+.portfolio-personal {
+  margin-bottom: 4rem;
+}
+
 .blogs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
