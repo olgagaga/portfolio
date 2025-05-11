@@ -14,7 +14,7 @@
                 targetSection.classList.add("active");
             } else {
                 // On moles_segmentation.html: Redirect to index.html#section
-                window.location.href = `../index.html#${targetId}`;
+                window.location.href = `../../index.html#${targetId}`;
             }
         });
     });
