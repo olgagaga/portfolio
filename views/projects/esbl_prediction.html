@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moles Semantic Segmentation Project</title>
+  <title>ESBL Prediction Project</title>
   <link rel="stylesheet" href="../../styles/styles.css">
   <link rel="stylesheet" href="../../styles/moles_segmentation.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,31 @@
 
       <p class="project-text">
           The full paper is currently under review in a peer-reviewed journal.
+      </p>
+
+      <h4 class="stat-title">Problem Statement</h4>
+      <p class="project-text">
+          Delayed and inappropriate antibiotic use in emergency departments contributes to the spread of resistant bacteria and worse outcomes.
+          Extended-Spectrum β-Lactamase-producing Enterobacterales (ESBL-E) infections are a growing threat. Rapid, accurate risk stratification is essential to ensure early carbapenem treatment when appropriate — without overusing these powerful drugs and fueling resistance.
+      </p>
+
+      <h4 class="stat-title">Methods</h4>
+      <p class="project-text">
+          We built a machine learning model to predict ESBL-E infections at the time of antibiotic ordering in the Emergency Department using real-world EHR data. The model was trained on over 129,000 adult ED encounters at Johns Hopkins (2019–2024).
+          Features included:
+      </p>
+      <ul class="future-directions">
+          <li>Vitals, labs, and medication history</li>
+          <li>Comorbidities</li>
+          <li>Healthcare worker-mediated exposure networks</li>
+      </ul>
+      <p class="project-text">
+          The algorithm — a gradient boosting model — was trained on data before July 2023 and validated on the remainder.
+      </p>
+
+      <h4 class="stat-title">Impact</h4>
+      <p class="project-text">
+          This model shows strong potential to support real-time antibiotic decisions in the ED using existing EHR infrastructure. With further refinement, it can guide early, targeted interventions — improving outcomes and preserving the effectiveness of last-line antibiotics.
       </p>
 
   </div>
