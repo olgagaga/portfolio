@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How I Automated Customer Interview Analysis with AI</title>
+    <link rel="stylesheet" href="../../styles/styles.css" />
+    <link rel="stylesheet" href="../../styles/moles_segmentation.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="main-content">
+    <section class="container project-container active" id="project">
+      <div class="project-content">
+        <div class="main-title">
+          <h2>
+            How I Automated <span>Customer Interview Analysis</span> with
+            AI<span class="bg-text">Blog post</span>
+          </h2>
+        </div>
+        <p class="project-text">
+          <i
+            >How AI saved my sanity, cut my feedback loop in half, and helped me
+            build what users actually wanted.</i
+          >
+          <br /><br />
+          If you’re building a startup, you’ve probably heard the same advice a
+          million times: <b>“Talk to your users.”</b>
+          But what nobody warns you about is the amount of data you get back. I
+          found myself buried in transcripts, sticky notes, and Teelgram DMs -
+          each with golden nuggets, but almost impossible to process fast
+          enough.
+          <br /><br />
+          Manual analysis just couldn’t keep up. By the time I’d finished
+          reading through interviews, my early adopters had already moved on.
+          Something had to change.
+        </p>
+        <h4 class="stat-title">My Product (And Why Feedback Mattered)</h4>
+        <p class="project-text">
+          I’m developing a voice-controlled productivity tool: think Telegram
+          bot meets digital assistant. Early feedback was critical: I didn’t
+          want to waste time on features nobody wanted, or miss out on a
+          must-have request because I was too slow on the analysis.
+        </p>
+
+        <h4 class="stat-title">
+          Step 1: Automated, Structured Insight Extraction
+        </h4>
+        <p class="project-text">
+          My goal was to turn a messy transcript into actionable, categorized
+          insights in minutes. Manual analysis just couldn’t keep up with the
+          pace of real product development, so I set out to build something
+          smarter.
+          <br /><br />
+          Ana here is how I made it work step by step:
+
+          <br /><br />
+          <b>1. Record and Transcribe Interviews:</b> First, I focused on
+          capturing every word from my customer conversations. I recorded each
+          customer interview and let <span>tldv</span> automatically generate
+          high-quality transcripts for me. This saved time and ensured I had an
+          accurate record to analyze. <br /><br />
+          <b>2. Build an Automated n8n Workflow:</b> Next, I connected
+          everything with n8n, a no-code automation platform. My setup is simple
+          but powerful: as soon as I add a new transcript to my Google Drive,
+          n8n takes over. Behind the scenes, an automation trigger keeps a
+          constant watch on a specific Google Drive folder. When a new
+          transcript arrives, the system reads its contents and immediately
+          sends the text — along with a carefully crafted prompt — to Gemini 2.5
+          Flash. Gemini then analyzes the transcript and extracts all the key
+          product insights in a clear, structured format. Finally, each insight
+          is added directly into a Google Sheet for easy review and further
+          analysis. With this hands-off pipeline, I know that as soon as I
+          finish a customer call, my insights are already being processed—so I
+          can focus on building, not copy-pasting. <br /><br />
+          Here’s the exact prompt I use:
+        </p>
+
+        <p class="code-snippet">
+          You are a customer interview analyst helping extract key insights from
+          product-related customer conversations. Exclude information unrelated
+          to the product.
+          <br /><br />
+          Product: Telegram bot for organizing tasks (save content by category,
+          reminders, voice/text input).
+          <br /><br />
+          Task: Analyze the interview transcript and extract all relevant
+          insights, classifying them by category:
+          <br />1. #pain — what the user dislikes, finds annoying, or difficult.
+          <br />2. #feature — requests for new features or improvements.
+          <br />3. #bug — what doesn't work or works incorrectly. <br />4.
+          #feedback — opinions about existing features (like/dislike). <br />5.
+          #insight — unexpected comments or hidden needs. <br /><br />
+          Output format:
+          <br />- Each insight starts with a tag (e.g., #pain). <br />- After
+          the tag, a quote from the interview (verbatim or close to the
+          original). <br />- Then a brief interpretation (what exactly is the
+          pain/request/problem). <br />
+          If there's emotional tone (frustration, enthusiasm), mention it in
+          parentheses. <br /><br />
+          Example:
+          <br />#pain "I constantly forget to save links, and then can't find
+          them" – No convenient way to quickly save links (frustration).
+          <br /><br />
+          #feature "I’d like the bot to suggest categories for tasks" – Request
+          for AI suggestions when creating tasks.
+          <br /><br />
+          #insight "I rarely use voice input because I’m afraid to make
+          mistakes" – Hidden fear of errors when using voice input.
+          <br /><br />
+          Important:
+          <br />- Include even indirect complaints ("I have to copy manually" →
+          #pain). <br />- Note strong emotions (e.g., "This is just terrible!").
+          <br />- Don’t add generic phrases with no specifics. <br />- Follow
+          the example format exactly. Separate each insight with \n\n.
+        </p>
+
+        <p class="project-text">
+          <figure style="text-align: center; margin: 0 auto; display: block">
+            <img
+              src="../../img/blog/n8n_workflow.png"
+              alt="n8n Workflow Screenshot"
+              width="900"
+            />
+            <figcaption>
+              Figure: My n8n automation—watching Google Drive, calling Gemini,
+              saving to Sheets.
+            </figcaption>
+          </figure>
+          <br />
+        </p>
+
+        <h4 class="stat-title">Step 2: Clustering Insights with Embeddings</h4>
+
+        <p class="project-text">
+          Once insights are structured, I want to see the big picture: what are
+          the recurring pains, requests, and surprises? To achieve this, I used
+          the following steps in python.
+          <br /><br />
+          First, I generate embeddings for each insight using the
+          <span>OpenAI API</span>. This converts each insight into a numerical
+          vector that captures its meaning in a high-dimensional space.
+        </p>
+        <p class="code-snippet">
+          <span class="keyword">def</span>
+          <span class="function">get_embedding</span>(<span class="number"
+            >text</span
+          >, <span class="number">model</span>=<span class="string"
+            >"text-embedding-3-small"</span
+          >, <span class="number">retry_delay</span>=<span class="number"
+            >5</span
+          >): <br />&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">while</span>
+          <span class="function">True</span>:
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="keyword"
+            >try</span
+          >:
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="number"
+            >response</span
+          >
+          = <span class="number">openai</span>.<span class="number"
+            >embeddings</span
+          >.<span class="function">create</span>(<span class="number"
+            >input</span
+          >=[<span class="number">text</span>],
+          <span class="number">model</span>=<span class="number">model</span>)
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="keyword"
+            >return</span
+          >
+          <span class="number">response</span>.<span class="number">data</span
+          >[<span class="number">0</span>].<span class="number">embedding</span>
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="keyword"
+            >except</span
+          >
+          <span class="function">Exception</span>
+          <span class="keyword">as</span> <span class="number">e</span>:
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="function"
+            >print</span
+          >(<span class="string">f"Retrying due to error: {e}"</span>)
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="number"
+            >time</span
+          >.<span class="function">sleep</span>(<span class="number"
+            >retry_delay</span
+          >)
+        </p>
+
+        <p class="project-text">
+          Next, I used UMAP for dimensionality reduction and HDBSCAN for
+          clustering similar insights, no matter how differently they’re
+          phrased.
+        </p>
+        <p class="code-snippet">
+          <span class="number">umap_model</span> =
+          <span class="number">umap</span>.<span class="function">UMAP</span
+          >(<span class="number">n_neighbors</span>=<span class="number"
+            >15</span
+          >, <span class="number">n_components</span>=<span class="number"
+            >7</span
+          >, <span class="number">metric</span>=<span class="string"
+            >'cosine'</span
+          >, <span class="number">random_state</span>=<span class="number"
+            >42</span
+          >) <br /><span class="number">reduced_embeddings</span> =
+          <span class="number">umap_model</span>.<span class="function"
+            >fit_transform</span
+          >(<span class="number">embedding_array</span>) <br /><br />
+          <span class="number">clusterer</span> =
+          <span class="number">hdbscan</span>.<span class="function"
+            >HDBSCAN</span
+          >(<span class="number">min_cluster_size</span>=<span class="number"
+            >2</span
+          >, <span class="number">metric</span>=<span class="string"
+            >'euclidean'</span
+          >, <span class="number">prediction_data</span>=<span class="function"
+            >True</span
+          >) <br /><span class="number">cluster_labels</span> =
+          <span class="number">clusterer</span>.<span class="function"
+            >fit_predict</span
+          >(<span class="number">reduced_embeddings</span>)
+        </p>
+
+        <p class="project-text">
+          Here is an example of a matplotlib visualization of the clusters:
+          <br />
+
+          <figure style="text-align: center; margin: 0 auto; display: block">
+            <img
+              src="../../img/blog/clusters_plot.png"
+              alt="Clusters plot"
+              width="700"
+            />
+            <figcaption>Representation of the Semantic Clusters</figcaption>
+          </figure>
+          <br />
+        </p>
+
+        <p class="project-text">
+          Finally, I used the clusters to create a summary of the most common
+          insights, which I could then prioritize for development.
+        </p>
+
+        <p class="code-snippet">
+          <span class="number">clusters</span> =
+          <span class="function">sorted</span>(<span class="number">c</span>
+          <span class="keyword">for</span> <span class="number">c</span>
+          <span class="keyword">in</span> <span class="number">df</span>[<span
+            class="string"
+            >"cluster"</span
+          >].<span class="function">unique</span>()
+          <span class="keyword">if</span> <span class="number">c</span> !=
+          -<span class="number">1</span>) <br /><br />
+          <span class="number">cluster_summaries</span> = [] <br /><br />
+          <span class="keyword">def</span>
+          <span class="function">summarize_cluster</span>(<span class="number"
+            >insights</span
+          >): <br />&nbsp;&nbsp;&nbsp;&nbsp;<span class="number">prompt</span> =
+          ( <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="string"
+            >"You have several user observations from interviews. "</span
+          >
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="string"
+            >"Formulate one or two sentences that reflect the essence of the
+            common problem or user needs. "</span
+          >
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="string"
+            >"Don't repeat all the formulations, but summarize their
+            meaning."</span
+          >
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="string"
+            >"\n\n"</span
+          >
+          + <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="string"
+            >"\n"</span
+          >.<span class="function">join</span>([<span class="string"
+            >f"- {s}"</span
+          >
+          <span class="keyword">for</span> <span class="number">s</span>
+          <span class="keyword">in</span> <span class="number">insights</span>])
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;) <br />&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="number"
+            >response</span
+          >
+          = <span class="number">openai</span>.<span class="number">chat</span
+          >.<span class="number">completions</span>.<span class="function"
+            >create</span
+          >( <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="number"
+            >model</span
+          >=<span class="string">"gpt-4o"</span>,
+          <span class="comment"># or "gpt-4o-mini"</span>
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="number"
+            >messages</span
+          >=[
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<span
+            class="string"
+            >"role"</span
+          >: <span class="string">"system"</span>,
+          <span class="string">"content"</span>:
+          <span class="string">"You are a user interview analyst."</span>},
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<span
+            class="string"
+            >"role"</span
+          >: <span class="string">"user"</span>,
+          <span class="string">"content"</span>:
+          <span class="number">prompt</span>}
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="number"
+            >temperature</span
+          >=<span class="number">0.3</span> <br />&nbsp;&nbsp;&nbsp;&nbsp;)
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>
+          <span class="number">response</span>.<span class="number"
+            >choices</span
+          >[<span class="number">0</span>].<span class="number">message</span
+          >.<span class="number">content</span>.<span class="function"
+            >strip</span
+          >()
+        </p>
+
+        <h4 class="stat-title">
+          What I Learned (and How it Changed My Product)
+        </h4>
+        <ul class="future-directions">
+          <li>
+            Gemini 2.5 Flash outperformed GPT-4 and GPT-4o for structured
+            insight extraction from interviews, and it offers a generous free
+            tier, making it perfect for early-stage founders and students.
+          </li>
+          <li>
+            Programming and automation skills are a true superpower, even in
+            business-focused work. They help you act faster, learn more, and
+            respond to feedback while others are still sorting spreadsheets.
+          </li>
+          <li>
+            Direct feedback analysis drove a major product pivot: Talking to
+            real users helped me realize I needed to shift from building an
+            “advanced smart storage” tool for Telegram to focusing on a
+            voice-controlled productivity assistant - exactly what my customers
+            wanted.
+          </li>
+        </ul>
+
+        <h4 class="stat-title">
+          Try It Yourself and Tell Me If You Want This Public!
+        </h4>
+        <p class="project-text">
+          I’m thinking about releasing this analysis system - maybe as a simple
+          web tool or template, so anyone can automate customer interview
+          analysis.<br /><br />
+          Would you use this? <br /><br />
+          Let me know if there’s interest, I’ll make it available!
+        </p>
+
+        <!--    <div class="btn-con-project">-->
+        <!--      <a href="../../index.html" class="main-btn">-->
+        <!--        <span class="btn-text">Back to Portfolio</span>-->
+        <!--        <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>-->
+        <!--      </a>-->
+        <!--    </div>-->
+      </div>
+    </section>
+    <div class="controls">
+      <div class="control" data-id="home">
+        <i class="fas fa-home"></i>
+      </div>
+      <div class="control" data-id="about">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="control" data-id="portfolio">
+        <i class="fas fa-briefcase"></i>
+      </div>
+      <div class="control active-btn" data-id="blogs">
+        <i class="fas fa-newspaper"></i>
+      </div>
+      <div class="control" data-id="contact">
+        <i class="fas fa-envelope-open"></i>
+      </div>
+    </div>
+    <div class="theme-btn">
+      <i class="fas fa-adjust"></i>
+    </div>
+    <script src="../../app.js"></script>
+  </body>
+</html>
