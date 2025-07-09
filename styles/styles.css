@@ -829,104 +829,104 @@ section {
 
 /* Code Snippet Styles */
 .code-snippet {
-  background-color: var(--color-grey-6);
-  border: 1px solid var(--color-grey-4);
-  border-radius: 8px;
-  padding: 3rem 1.5rem 1.5rem 1.5rem;
-  margin: 1.5rem 0;
-  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--color-grey-1);
-  overflow-x: auto;
-  position: relative;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-grey-6) !important;
+  border: 1px solid var(--color-grey-4) !important;
+  border-radius: 8px !important;
+  padding: 3rem 1.5rem 1.5rem 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  color: var(--color-grey-1) !important;
+  overflow-x: auto !important;
+  position: relative !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
 .code-snippet::before {
-  content: 'CODE';
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  background-color: var(--color-secondary);
-  color: var(--color-white);
-  padding: 2px 8px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  border-radius: 4px;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.5px;
+  content: 'CODE' !important;
+  position: absolute !important;
+  top: 10px !important;
+  left: 15px !important;
+  background-color: var(--color-secondary) !important;
+  color: var(--color-white) !important;
+  padding: 2px 8px !important;
+  font-size: 0.7rem !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
+  font-family: 'Poppins', sans-serif !important;
+  letter-spacing: 0.5px !important;
 }
 
 .code-snippet p {
-  margin: 0;
-  padding: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
 }
 
 /* Syntax highlighting colors */
 .code-snippet .keyword {
-  color: #ff6b6b;
-  font-weight: bold;
+  color: #ff6b6b !important;
+  font-weight: bold !important;
 }
 
 .code-snippet .string {
-  color: #51cf66;
+  color: #51cf66 !important;
 }
 
 .code-snippet .comment {
-  color: var(--color-grey-3);
-  font-style: italic;
+  color: var(--color-grey-3) !important;
+  font-style: italic !important;
 }
 
 .code-snippet .function {
-  color: #74c0fc;
+  color: #74c0fc !important;
 }
 
 .code-snippet .number {
-  color: #ffd43b;
+  color: #ffd43b !important;
 }
 
 .code-snippet .operator {
-  color: #f783ac;
+  color: #f783ac !important;
 }
 
 /* Light mode adjustments */
 .light-mode .code-snippet {
-  background-color: var(--color-grey0);
-  border-color: var(--color-grey-1);
-  color: var(--color-grey-4);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: var(--color-grey0) !important;
+  border-color: var(--color-grey-1) !important;
+  color: var(--color-grey-4) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
 }
 
 /* Light mode syntax highlighting colors - high contrast */
 .light-mode .code-snippet .keyword {
-  color: #d63384; /* Darker pink/red for better contrast */
-  font-weight: bold;
+  color: #d63384 !important; /* Darker pink/red for better contrast */
+  font-weight: bold !important;
 }
 
 .light-mode .code-snippet .string {
-  color: #198754; /* Darker green for better contrast */
+  color: #198754 !important; /* Darker green for better contrast */
 }
 
 .light-mode .code-snippet .comment {
-  color: #6c757d; /* Darker gray for better contrast */
-  font-style: italic;
+  color: #6c757d !important; /* Darker gray for better contrast */
+  font-style: italic !important;
 }
 
 .light-mode .code-snippet .function {
-  color: #0d6efd; /* Darker blue for better contrast */
+  color: #0d6efd !important; /* Darker blue for better contrast */
 }
 
 .light-mode .code-snippet .number {
-  color: #fd7e14; /* Darker orange for better contrast */
+  color: #fd7e14 !important; /* Darker orange for better contrast */
 }
 
 .light-mode .code-snippet .operator {
-  color: #dc3545; /* Darker red for better contrast */
+  color: #dc3545 !important; /* Darker red for better contrast */
 }
 
 
